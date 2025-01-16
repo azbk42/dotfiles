@@ -1,0 +1,22 @@
+[legacy/profiles:]
+default='18f97f19-e425-433b-bd30-c4b2a1fb19ef'
+list=['18f97f19-e425-433b-bd30-c4b2a1fb19ef']
+
+[legacy/profiles:/:18f97f19-e425-433b-bd30-c4b2a1fb19ef]
+allow-bold=true
+audible-bell=true
+background-color='#292927272424'
+bold-color='#adada5a59494'
+bold-color-same-as-fg=true
+cursor-background-color='#bcbc67672f2f'
+cursor-blink-mode='system'
+cursor-colors-set=true
+cursor-foreground-color='#292927272424'
+cursor-shape='underline'
+foreground-color='#adada5a59494'
+highlight-colors-set=false
+palette=['#292927272424', '#81816f6f4b4b', '#ecec92925555', '#ffffb3b38080', '#95957e7e5050', '#ecec92925555', '#acac8e8e5353', '#adada5a59494', '#7e7e77776767', '#f2f29d9d6363', '#3d3d3a3a3434', '#61615c5c5151', '#909087877474', '#ddddcbcba6a6', '#e5e587874848', '#f2f2eaead9d9']
+use-theme-background=false
+use-theme-colors=false
+use-theme-transparency=false
+visible-name='Base2Tone Desert'
