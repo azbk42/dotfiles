@@ -36,7 +36,10 @@ else
 fi
 
 # Install background with skull image
-gsettings set org.gnome.desktop.background picture-uri "file:///$(pwd)/skull.jpg"
+echo ">>> init background"
+mkdir -p ~/.local/share/backgrounds
+cp "$(pwd)/skull.jpg" ~/.local/share/backgrounds/
+gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.local/share/backgrounds/skull.jpg"
 echo ">>> Background download succes !"
 
 # Vérifie si Oh My Zsh est installé
