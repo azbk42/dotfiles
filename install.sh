@@ -37,4 +37,20 @@ fi
 
 # Install background with skull image
 gsettings set org.gnome.desktop.background picture-uri "file:///$(pwd)/skull.jpg"
+echo ">>> Background download succes !"
 
+# Vérifie si Oh My Zsh est installé
+if [ -d "$HOME/.oh-my-zsh" ]; then
+    echo "Oh My Zsh est déjà installé."
+else
+    echo "Oh My Zsh n'est pas installé. Installation en cours..."
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # Vérifie si l'installation a réussi
+    if [ -d "$HOME/.oh-my-zsh" ]; then
+        echo "Oh My Zsh a été installé avec succès."
+    else
+        echo "Échec de l'installation d'Oh My Zsh. Vérifiez votre connexion ou les permissions."
+        exit 1
+    fi
+fi
