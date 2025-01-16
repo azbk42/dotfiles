@@ -35,4 +35,6 @@ else
     exit 1
 fi
 
+# Install background with skull image
+gsettings set org.gnome.desktop.background picture-uri "file:///$(pwd)/skull.jpg"
 
