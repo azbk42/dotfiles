@@ -107,7 +107,8 @@ export PATH="$PATH:/home/azbk/.local/bin"
 function push_obsidian() {
   var_file=$(find / -type d -name "obsidiant-vault" 2>/dev/null)
   if [ -d "$var_file" ]; then
-    cd "$var_file" && git add . && git commit -m "push" && git push
+    cd "$var_file" && git add . && git commit -m "push" && git push && cd -
+
   else
     echo "Directory not found."
   fi
