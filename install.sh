@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 set -e
@@ -59,6 +60,5 @@ else
 fi
 
 rm ~/.zshrc
-mv zsh/.zshrc ~/.zshrc
-cp ~/.zshrc . && source ~/.zshrc
+cp zsh/.zshrc ~/.zshrc
 
