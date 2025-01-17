@@ -57,3 +57,8 @@ else
         exit 1
     fi
 fi
+
+rm ~/.zshrc
+mv zsh/.zshrc ~/.zshrc
+cp ~/.zshrc . && source ~/.zshrc
+
