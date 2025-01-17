@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 set -e
@@ -27,8 +26,9 @@ else
     echo ">>> dconf est déjà installé."
 fi
 
-# Charge le profil depuis le fichier sauvegardé
+# Vérifie si le fichier de configuration GNOME Terminal existe
 if [ -f "terminal-setup/gnome-terminal-profiles.dconf" ]; then
+    echo ">>> Chargement du profil GNOME Terminal..."
     dconf load /org/gnome/terminal/ < terminal-setup/gnome-terminal-profiles.dconf
     echo ">>> Profil GNOME Terminal restauré avec succès !"
 else
@@ -36,28 +36,34 @@ else
     exit 1
 fi
 
-# Install background with skull image
-echo ">>> init background"
-mkdir -p ~/.local/share/backgrounds
-cp "$(pwd)/skull.jpg" ~/.local/share/backgrounds/
-gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.local/share/backgrounds/skull.jpg"
-echo ">>> Background download succes !"
+# Installe un fond d'écran si ce n'est pas déjà configuré
+BACKGROUND_PATH="$HOME/.local/share/backgrounds/skull.jpg"
+if [ ! -f "$BACKGROUND_PATH" ]; then
+    echo ">>> Installation du fond d'écran..."
+    mkdir -p ~/.local/share/backgrounds
+    cp "$(pwd)/skull.jpg" "$BACKGROUND_PATH"
+    gsettings set org.gnome.desktop.background picture-uri "file://$BACKGROUND_PATH"
+    echo ">>> Fond d'écran installé avec succès !"
+else
+    echo ">>> Le fond d'écran est déjà installé."
+fi
 
 # Vérifie si Oh My Zsh est installé
 if [ -d "$HOME/.oh-my-zsh" ]; then
-    echo "Oh My Zsh est déjà installé."
+    echo ">>> Oh My Zsh est déjà installé."
 else
-    echo "Oh My Zsh n'est pas installé. Installation en cours..."
+    echo ">>> Oh My Zsh n'est pas installé. Installation en cours..."
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     # Vérifie si l'installation a réussi
     if [ -d "$HOME/.oh-my-zsh" ]; then
-        echo "Oh My Zsh a été installé avec succès."
+        echo ">>> Oh My Zsh a été installé avec succès."
     else
-        echo "Échec de l'installation d'Oh My Zsh. Vérifiez votre connexion ou les permissions."
+        echo ">>> Échec de l'installation d'Oh My Zsh. Vérifiez votre connexion ou les permissions."
         exit 1
     fi
 fi
+
 
 rm ~/.zshrc
 cp zsh/.zshrc ~/.zshrc
